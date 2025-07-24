@@ -1,0 +1,10 @@
+/**:
+  ros__parameters:
+    nav:
+      filter_handler:
+        default_filter: "sample_and_hold"
+        filters:
+          - "sample_and_hold"
+          - "complementary"
+      sample_and_hold:
+        neglect_current: true # if true, body velocity with respect to the fluid will be the same as the inertial one

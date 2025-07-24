@@ -1,0 +1,46 @@
+/**:
+  ros__parameters:
+    actuation:
+      model:
+        K_s: 1.0
+        K_L: 1.0
+        K_D0: 1.0
+        K_D1: 1.0
+      rudder:
+        limits:
+          max: 36.0 # [deg]
+          min: -36.0 # [deg]
+        cm_distance: 4.0 # [m]
+      thrusters:
+        rpm_conversion:
+          max_rpm: 4500.0
+          min_rpm: -4500.0
+          #Forces (N) = ct[0]*RPM^2 + c[1]*RPM + c[2]
+          coef_fwd: [0.00000177778, 0.0, 0.0]     # parameters for farol seabotix, eqn -> Thrust = f(rpm)
+          coef_bwd: [-0.00000177778, 0.0, 0.0]     # parameters for farol seabotix, eqn -> Thrust = f(rpm)
+        configuration:
+          0:
+            name: "Portside"
+            moment_arms: [-4.0, -1.5, 0.0] # [m]
+            angles: [0.0, 0.0, 0.0] # roll, pitch, yaw [deg]
+          1:
+            name: "Starboard"
+            moment_arms: [-4.0, 1.5, 0.0] # [m]
+            angles: [0.0, 0.0, 0.0] # roll, pitch, yaw [deg]
+          # TEST: MYELLOW HORIZONTAL THRUSTERS 45 DEG
+          # 0:
+          #   name: "Portside-Bow"
+          #   moment_arms: [1.0, -1.0, 0.0]
+          #   angles: [0.0, 0.0, 45.0] # roll, pitch, yaw
+          # 1:
+          #   name: "Starboard-Bow"
+          #   moment_arms: [1.0, 1.0, 0.0]
+          #   angles: [0.0, 0.0, -45.0] # roll, pitch, yaw
+          # 2:
+          #   name: "Portside-Stern"
+          #   moment_arms: [-1.0, -1.0, 0.0]
+          #   angles: [0.0, 0.0, -45.0] # roll, pitch, yaw
+          # 3:
+          #   name: "Starboard-Stern"
+          #   moment_arms: [-1.0, 1.0, 0.0]
+          #   angles: [0.0, 0.0, 45.0] # roll, pitch, yaw

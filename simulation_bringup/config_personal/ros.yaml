@@ -1,0 +1,54 @@
+/**:
+  ros__parameters:
+    actuation:
+      rpm_conversion:
+        node_frequency: 10
+        topics:
+          subscribers:
+            thruster_force: "/#vehicle#/actuation/thruster_force"
+          publishers:
+            rpm_command: "/#vehicle#/actuation/rpm_command"
+      static_thruster_allocation:
+        node_frequency: 10
+        topics:
+          subscribers:
+            body_wrench_request: "/#vehicle#/actuation/body_wrench_request"
+          publishers:
+            thruster_force: "/#vehicle#/actuation/thruster_force"
+      thruster_rudder_allocation:
+        node_frequency: 1
+        topics:
+          subscribers:
+            body_wrench_request: "/#vehicle#/actuation/body_wrench_request"
+            nav_state: "/#vehicle#/nav/filter/state"
+          publishers:
+            thruster_force: "/#vehicle#/actuation/thruster_force"
+            rudder_angle_ref: "/#vehicle#/ref/rudder_angle"
+    nav:
+      filter_handler:
+        node_frequency: 10
+        topics:
+          subscribers:
+            sample_and_hold: "/#vehicle#/nav/sample_and_hold/state"
+            complementary: "/#vehicle#/nav/complementary/state"
+          publishers:
+            state: "/#vehicle#/nav/filter/state"
+          services:
+            change_filter: "/#vehicle#/nav/change_filter"
+      sample_and_hold:
+        node_frequency: 10
+        topics:
+          subscribers:
+            measurement: "/#vehicle#/measurement"
+          publishers:
+            state: "/#vehicle#/nav/sample_and_hold/state"
+    sim:
+      simulation:
+        node_frequency: 10
+        topics:
+          subscribers:
+            test0: "/#vehicle#/sim/something"
+          publishers:
+            test1: "/#vehicle#/sim/something_else"
+          services:
+            test2: "/#vehicle#/sim/change_something"
